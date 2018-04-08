@@ -29,8 +29,13 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Details',
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state;
+    
+    return {
+      // Si hay parametros, quiere decir que llegamos mediante el home screen
+      title: params ? 'Details' : 'A Nested Details Screen',
+    }
   };
   render() {
     /* 2. Read the params from the navigation state */
