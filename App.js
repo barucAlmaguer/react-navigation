@@ -93,6 +93,13 @@ const RootStack = StackNavigator(
       headerTitleStyle: {
         fontWeight: 'bold',
       },
+      headerRight: (
+        <Button
+          onPress={() => alert('This is a button!')}
+          title="Info"
+          color="#444"
+        />
+      ),
     },
   }
 );
