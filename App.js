@@ -1,7 +1,7 @@
 // In App.js in a new project
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {
@@ -9,6 +9,10 @@ class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text>Homies Screen</Text>
+          <Button
+            title='Go to Details'
+            onPress={()=> this.props.navigation.navigate('Details')}
+          />
       </View>
     );
   }
@@ -17,8 +21,14 @@ class HomeScreen extends React.Component {
 class DetailsScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+      <View style={{ flex: 1, backgroundColor:'steelblue' }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Details Screen</Text>
+          <Button
+            title='Go with ur homies'
+            onPress={()=> this.props.navigation.navigate('Home')}
+          />
+        </View>
       </View>
     );
   }
