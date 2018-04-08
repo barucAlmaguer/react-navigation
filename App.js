@@ -7,13 +7,6 @@ import { StackNavigator } from 'react-navigation';
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Home',
-    headerStyle: {
-      backgroundColor: '#8080ff',
-    },
-    headerTintColor: '#eee',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
   };
   render() {
     return (
@@ -36,16 +29,16 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
     
     return {
       // Si hay parametros, quiere decir que llegamos mediante el home screen
       title: params ? params.otherParam : 'A Nested Details Screen',
       headerStyle: {
-        backgroundColor: '#208020',
+        backgroundColor: navigationOptions.headerTintColor,
       },
-      headerTintColor: '#444',
+      headerTintColor: navigationOptions.headerStyle.backgroundColor,
       headerTitleStyle: {
         fontWeight: 'bold',
       },
@@ -92,6 +85,15 @@ const RootStack = StackNavigator(
   },
   {
     initialRouteName: 'Home',
+    navigationOptions:{
+      headerStyle: {
+        backgroundColor: '#8080ff',
+      },
+      headerTintColor: '#eee',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
   }
 );
 
