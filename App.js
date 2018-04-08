@@ -7,6 +7,13 @@ import { StackNavigator } from 'react-navigation';
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Home',
+    headerStyle: {
+      backgroundColor: '#8080ff',
+    },
+    headerTintColor: '#eee',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
   };
   render() {
     return (
@@ -35,6 +42,13 @@ class DetailsScreen extends React.Component {
     return {
       // Si hay parametros, quiere decir que llegamos mediante el home screen
       title: params ? params.otherParam : 'A Nested Details Screen',
+      headerStyle: {
+        backgroundColor: '#208020',
+      },
+      headerTintColor: '#444',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     }
   };
   render() {
