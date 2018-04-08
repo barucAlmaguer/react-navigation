@@ -5,6 +5,9 @@ import { View, Text, Button } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+  };
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -26,6 +29,9 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Details',
+  };
   render() {
     /* 2. Read the params from the navigation state */
     const { params } = this.props.navigation.state;
