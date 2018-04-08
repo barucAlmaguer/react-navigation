@@ -28,6 +28,10 @@ class DetailsScreen extends React.Component {
             title='Go with ur homies'
             onPress={()=> this.props.navigation.navigate('Home')}
           />
+          <Button
+            title='Go Back'
+            onPress={() => this.props.navigation.goBack()}
+          />
         </View>
       </View>
     );
