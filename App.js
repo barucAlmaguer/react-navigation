@@ -8,11 +8,18 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Homies Screen</Text>
-          <Button
-            title='Go to Details'
-            onPress={()=> this.props.navigation.navigate('Details')}
-          />
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Details"
+          onPress={() => {
+            /* 1. Navigate to the Details route with params */
+            this.props.navigation.navigate('Details', {
+              itemId: 86,
+              otherParam: 'anything you want here',
+              name: 'Homer J. Simpson'
+            });
+          }}
+        />
       </View>
     );
   }
@@ -20,19 +27,26 @@ class HomeScreen extends React.Component {
 
 class DetailsScreen extends React.Component {
   render() {
+    /* 2. Read the params from the navigation state */
+    const { params } = this.props.navigation.state;
+    const itemId = params ? params.itemId : null;
+    const otherParam = params ? params.otherParam : null;
+    const paramName = params ? this.props.navigation.state.params.name : null;
+
     return (
-      <View style={{ flex: 1, backgroundColor:'steelblue' }}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Details Screen</Text>
-          <Button
-            title='Go with ur homies'
-            onPress={()=> this.props.navigation.navigate('Home')}
-          />
-          <Button
-            title='Go Back'
-            onPress={() => this.props.navigation.goBack()}
-          />
-        </View>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+        <Text>itemId: {JSON.stringify(itemId)}</Text>
+        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
+        <Text>Name: {JSON.stringify(paramName)}</Text>
+        <Button
+          title="Go to Details... again"
+          onPress={() => this.props.navigation.navigate('Details')}
+        />
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
+        />
       </View>
     );
   }
