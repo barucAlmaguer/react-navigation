@@ -18,7 +18,7 @@ class HomeScreen extends React.Component {
             /* 1. Navigate to the Details route with params */
             this.props.navigation.navigate('Details', {
               itemId: 86,
-              otherParam: 'anything you want here',
+              otherParam: 'Details', //for details screen
               name: 'Homer J. Simpson'
             });
           }}
@@ -34,7 +34,7 @@ class DetailsScreen extends React.Component {
     
     return {
       // Si hay parametros, quiere decir que llegamos mediante el home screen
-      title: params ? 'Details' : 'A Nested Details Screen',
+      title: params ? params.otherParam : 'A Nested Details Screen',
     }
   };
   render() {
@@ -53,6 +53,10 @@ class DetailsScreen extends React.Component {
         <Button
           title="Go to Details... again"
           onPress={() => this.props.navigation.navigate('Details')}
+        />
+        <Button
+          title="Update the title"
+          onPress={() => this.props.navigation.setParams({ otherParam: 'Updated!' })}
         />
         <Button
           title="Go back"
